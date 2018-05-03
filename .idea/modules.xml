@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FilesColler.iml" filepath="$PROJECT_DIR$/FilesColler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FilesConcat.iml" filepath="$PROJECT_DIR$/FilesConcat.iml" />
     </modules>
   </component>
 </project>
