@@ -34,10 +34,10 @@ public class CreatePDF {
     private static void initFile() {
         CTSectPr sectPr = document.getDocument().getBody().addNewSectPr();
         CTPageMar pageMar = sectPr.addNewPgMar();
-        pageMar.setLeft(BigInteger.valueOf(720L));
-        pageMar.setTop(BigInteger.valueOf(720L));
-        pageMar.setRight(BigInteger.valueOf(720L));
-        pageMar.setBottom(BigInteger.valueOf(720L));
+        pageMar.setLeft(BigInteger.valueOf(620L));
+        pageMar.setTop(BigInteger.valueOf(620L));
+        pageMar.setRight(BigInteger.valueOf(620L));
+        pageMar.setBottom(BigInteger.valueOf(620L));
         XWPFParagraph paragraph = document.createParagraph();
         paragraph.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun run = paragraph.createRun();
