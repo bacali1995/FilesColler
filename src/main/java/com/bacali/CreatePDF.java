@@ -13,7 +13,8 @@ public class CreatePDF {
     private static String filesPath = "D:\\ACM-Algorithms\\src\\com\\eniso\\acm";
     private static String docPath = "C:\\Users\\BacAli\\Desktop\\ACM NoteBook 2018.docx";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        System.out.println("Creating File ...");
         initFile();
         File file = new File(filesPath);
         try {
@@ -28,6 +29,8 @@ public class CreatePDF {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            System.out.println("Done "+docPath);
         }
     }
 
