@@ -14,12 +14,12 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>LATEST</version>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>ooxml-schemas</artifactId>
-            <version>LATEST</version>
+            <version>1.4</version>
         </dependency>
     </dependencies>
 
@@ -37,7 +37,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>target/</classpathPrefix>
-                            <mainClass>com.bacali.CreatePDF</mainClass>
+                            <mainClass>com.bacali.CreateFile</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
