@@ -10,59 +10,29 @@ import java.math.BigInteger;
 public class CreatePDF {
 
     private static XWPFDocument document = new XWPFDocument();
-    private static String filesPath = "D:\\ACM-Algorithms\\src\\com\\eniso\\acm";
-    private static String docPath = "C:\\Users\\BacAli\\Desktop\\ACM NoteBook 2018.docx";
 
     public static void main(String[] args) {
-        System.out.println("Creating File ...");
-        initFile();
-        File file = new File(filesPath);
-        try {
-            FileOutputStream out = new FileOutputStream(docPath);
-            int index = 1;
-            for (File f : file.listFiles()) {
-                createDocx(f, "", index++, 1);
+        if (args.length == 0) {
+            System.out.println("Enter directory path!");
+        } else {
+            System.out.println("Creating File ...");
+            String filesPath = args[0];
+            File file = new File(filesPath);
+            try {
+                FileOutputStream out = new FileOutputStream(file.getName() + ".docx");
+                int index = 1;
+                for (File f : file.listFiles()) {
+                    createDocx(f, "", index++, 1);
+                }
+                document.write(out);
+                out.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("Directory not found!!");
+            } catch (IOException e) {
+                System.out.println("Directory not found!!");
             }
-            document.write(out);
-            out.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            System.out.println("Done "+docPath);
+            System.out.println("Done.");
         }
-    }
-
-    private static void initFile() {
-        CTSectPr sectPr = document.getDocument().getBody().addNewSectPr();
-        CTPageMar pageMar = sectPr.addNewPgMar();
-        pageMar.setLeft(BigInteger.valueOf(620L));
-        pageMar.setTop(BigInteger.valueOf(620L));
-        pageMar.setRight(BigInteger.valueOf(620L));
-        pageMar.setBottom(BigInteger.valueOf(620L));
-        XWPFParagraph paragraph = document.createParagraph();
-        paragraph.setAlignment(ParagraphAlignment.CENTER);
-        XWPFRun run = paragraph.createRun();
-        run.setFontFamily("LM Roman 10");
-        run.addBreak();
-        run.addBreak();
-        run.setFontSize(16);
-        run.setText("ecole nationale d'ingenieurs de sousse".toUpperCase());
-        run.addBreak();
-        run.addBreak();
-        run.setText("CLUB ACM ENISo");
-        run.addBreak();
-        run.addBreak();
-        run.addBreak();
-        paragraph = document.createParagraph();
-        paragraph.setAlignment(ParagraphAlignment.CENTER);
-        run = paragraph.createRun();
-        run.setFontFamily("LM Roman 10");
-        run.setFontSize(27);
-        run.setBold(true);
-        run.setText("ACM Notebook 2018");
-        run.addBreak(BreakType.PAGE);
     }
 
     private static void createDocx(File file, String order, int index, int depth) throws IOException {
@@ -108,8 +78,8 @@ public class CreatePDF {
             int s = 0;
             while ((line = reader.readLine()) != null) {
                 if ((line.equals("") && s == 0)
-                        || line.contains("com.eniso.acm")
-                        || line.contains("import java.")) continue;
+                        || line.startsWith("import ")
+                        || line.startsWith("package ")) continue;
                 s++;
                 run.setText(line);
                 run.addBreak();
