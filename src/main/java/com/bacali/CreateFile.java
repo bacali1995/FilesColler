@@ -7,7 +7,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 import java.io.*;
 import java.math.BigInteger;
 
-public class CreatePDF {
+public class CreateFile {
 
     private static XWPFDocument document = new XWPFDocument();
 
